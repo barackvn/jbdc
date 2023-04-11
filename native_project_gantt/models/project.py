@@ -35,9 +35,8 @@ class ProjectTask(models.Model):
 
     @api.onchange('proj_employee')
     def _onchange_employee(self):
-        if self.proj_employee:
-            if self.proj_employee.job_title:
-                self.proj_role=self.proj_employee.job_title
+        if self.proj_employee and self.proj_employee.job_title:
+            self.proj_role=self.proj_employee.job_title
 
     @api.onchange('end_datetime')
     def _onchange_end_date(self):
